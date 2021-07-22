@@ -1,30 +1,3 @@
-
-// new Swiper('.swiper-container', {
-// 	loop: true,
-// 	navigation: {
-// 		nextEl: '.arrow',
-// 	},
-// 	breakpoints: {
-// 		320: {
-// 			slidesPerView: 1,
-// 			spaceBetween: 20
-// 		},
-// 		541: {
-// 			slidesPerView: 2,
-// 			spaceBetween: 40
-// 		}
-// 	}
-// });
-
-// Функция для кнопки сбоку( есть только при маленьких экранах)
-// const menuButton = document.querySelector('.menu-button');
-// const menu = document.querySelector('.header');
-// menuButton.addEventListener('click', function () {
-// 	menuButton.classList.toggle('menu-button-active');
-// 	menu.classList.toggle('header-active');
-// })
-
-
 // Функция для создания елементов
 const getElement = (tagName, classNames, attributes) => {
 	const element = document.createElement(tagName);
@@ -47,8 +20,7 @@ const createHeader = ({ title, header: { logo, menu, social } }) => {
 	const container = getElement('div', ['container']);
 	header.append(container);
 	const wrapper = getElement('div', ['header']);
-	const button = getElement('button', ['menu-button'],);
-	container.append(wrapper,button);
+	container.append(wrapper);
 
 	if (logo) {
 		const logotip = getElement('img', ['logo'], {
@@ -69,6 +41,13 @@ const createHeader = ({ title, header: { logo, menu, social } }) => {
 		});
 		menuWrapper.append(...allMenuLinks);
 		wrapper.append(menuWrapper);
+
+		const button = getElement('button', ['menu-button']);
+		button.addEventListener('click', () => {
+			button.classList.toggle('menu-button-active');
+			wrapper.classList.toggle('header-active');
+		});
+		container.append(button);
 	}
 
 	if (social) {
@@ -84,12 +63,13 @@ const createHeader = ({ title, header: { logo, menu, social } }) => {
 		})
 		socialWrapper.append(...allSocial);
 		wrapper.append(socialWrapper);
+
 	}
 	return header;
 };
 
 // Функция для создания главной части страницы
-const createMain = ({title, main: {genre, rating, mainTitle, description, trailer}}) => {
+const createMain = ({title, main: {genre, rating, mainTitle, description, trailer, slider}}) => {
 	const main = getElement('main');
 	const container = getElement('div', ['container']);
 	main.append(container);
@@ -158,6 +138,59 @@ const createMain = ({title, main: {genre, rating, mainTitle, description, traile
 		wrapper.append(mainLink);
 		content.append(trailerLink);
 	}
+
+	if (slider) {
+		const container = getElement('div', ['swiper-container']);
+		const buttonArrow = getElement('button', ['arrow']);
+		const wrapper = getElement('div', ['swiper-wrapper']);
+		
+		const slides = slider.map(item => {
+			const swiperSlide = getElement('div', ['swiper-slide']);
+			const card = getElement('figure', ['card']);
+			const cardImage = getElement('img', ['card-img'], {
+				src: item.img,
+				alt: item.subtitle,
+			});
+			const cardDescription = getElement('figcaption', ['card-description']);
+			const cardSubtitle = getElement('p', ['card-subtitle'], {
+				textContent: item.subtitle,
+			});
+			const cardTitle = getElement('p', ['card-title'], {
+				textContent: item.title,
+			});
+
+			cardDescription.append(cardSubtitle, cardTitle);
+			card.append(cardImage, cardDescription);
+			swiperSlide.append(card);
+			return swiperSlide;
+		})
+
+		wrapper.append(...slides);
+		container.append(wrapper);
+		series.append(container, buttonArrow);
+
+		// Функция для работы слайдера
+		new Swiper(container, {
+			loop: true,
+			navigation: {
+				nextEl: buttonArrow,
+			},
+			breakpoints: {
+				320: {
+					slidesPerView: 1,
+					spaceBetween: 20
+				},
+				541: {
+					slidesPerView: 2,
+					spaceBetween: 40
+				}
+			}
+		});
+
+
+
+
+	}
 	
 	return main;
 };
@@ -201,17 +234,24 @@ const createFooter = ({title, footer: {copyright, footerLink}}) => {
 // и options - сами элементы
 const сonstructor = (selector, options) => {
 
-	document.title = options.title;
-	const icon = getElement('link', [], {
-		rel: 'icon',
-		href: options.header.logo,
-	});
-	document.head = document.head.append(icon);
-	
 	const app = document.querySelector(selector);
 	app.classList.add('body-app')
 	app.style.backgroundImage = options.background ?
 		`url("${options.background}")` : '';
+	
+	document.title = options.title;
+
+	if (options.favicon) {
+		const index = options.favicon.lastIndexOf('.');
+		const type = options.favicon.substring(index + 1);
+
+		const icon = getElement('link', null, {
+			rel: 'icon',
+			href: options.favicon,
+			type: 'image/' + (type === 'svg' ? 'svg-xml' : type),
+		});
+		document.head.append(icon);
+	}
 	
 	if (options.header) {
 		app.append(createHeader(options));
@@ -232,6 +272,7 @@ const сonstructor = (selector, options) => {
 сonstructor('.app', {
 	title: 'Ведьмак - главная страница',
 	background: 'witcher/background.jpg',
+	favicon: 'witcher/logo.png',
 	header: {
 		logo: 'witcher/logo.png',
 		menu: [
@@ -272,6 +313,32 @@ const сonstructor = (selector, options) => {
 		mainTitle: 'Ведьмак',
 		description: 'Ведьмак Геральт, мутант и убийца чудовищ, на своей верной лошади по кличке Плотва путешествует по Континенту. За тугой мешочек чеканных монет этот мужчина избавит вас от всякой настырной нечисти — хоть от чудищ болотных, оборотней и даже заколдованных принцесс.',
 		trailer: 'https://www.youtube.com/watch?v=P0oJqfLzZzQ',
+		slider: [
+			{
+				img: 'witcher/series/series-1.jpg',
+				title: 'Начало конца',
+				subtitle: 'Серия №1',
+
+			},
+			{
+				img: 'witcher/series/series-2.jpg',
+				title: 'Четыре марки',
+				subtitle: 'Серия №2',
+
+			},
+			{
+				img: 'witcher/series/series-3.jpg',
+				title: 'Предательская луна',
+				subtitle: 'Серия №3',
+
+			},
+			{
+				img: 'witcher/series/series-4.jpg',
+				title: 'Банкеты, ублюдки и похороны',
+				subtitle: 'Серия №4',
+
+			},
+		]
 	},
 	footer: {
 		copyright: '© 2020 The Witcher. All right reserved.',

@@ -1,5 +1,6 @@
 html {
     --sub-color: #9D2929;
+    overflow-x: hidden;
 }
 
 img {
@@ -7,6 +8,11 @@ img {
     height: auto;
 }
 
+  /* Чтобы не было глюка при адаптации */
+body{
+    position: relative;
+    overflow-x: hidden;
+}
 
 .body-app {
     background-color: #141218;
@@ -340,12 +346,12 @@ img {
     .header {
         display: none;
         flex-direction: column;
-        position: absolute;
+        position: fixed;
         right: 0;
         top: 0;
-        background-color: var(--sub-color);
-        width: 250px;
-        padding-bottom: 40px;
+        background-color: #0d0c0c;
+        width: 213px;
+        padding-bottom: 100%;
     }
 
     .header-active {
