@@ -234,13 +234,22 @@ const createFooter = ({title, footer: {copyright, footerLink}}) => {
 // и options - сами элементы
 const сonstructor = (selector, options) => {
 
+	// Берём главный элемент в котором будет создаваться вся верстка
 	const app = document.querySelector(selector);
 	app.classList.add('body-app')
+
+	// Здесь будут менятья задний фон цвета по желанию пользователя или по умолчанию
 	app.style.backgroundImage = options.background ?
 		`url("${options.background}")` : '';
-	
+	app.style.color = options.textColor || '';
+	app.style.backgroundColor = options.backgroundColor || '';
+	if (options.subColor) {
+		document.documentElement.style.setProperty('--sub-color', options.subColor);
+	}
+	// Для изменения title
 	document.title = options.title;
 
+	// Для изменения иконки на вкладке
 	if (options.favicon) {
 		const index = options.favicon.lastIndexOf('.');
 		const type = options.favicon.substring(index + 1);
@@ -269,10 +278,17 @@ const сonstructor = (selector, options) => {
 
 
 // Вызов главной функции. Здесь пользователь сам прописывает что нужно и как.
+// Например для Сериала Ведьмак И Локи
+
+// Для сериала Ведьмак
+/*
 сonstructor('.app', {
 	title: 'Ведьмак - главная страница',
 	background: 'witcher/background.jpg',
 	favicon: 'witcher/logo.png',
+	textColor: '#ffffff',
+	backgroundColor: '#141218',
+	subColor: '#9D2929',
 	header: {
 		logo: 'witcher/logo.png',
 		menu: [
@@ -350,4 +366,95 @@ const сonstructor = (selector, options) => {
 
 	},
 
+});
+*/
+
+// Для сериала Локи
+сonstructor('.app', {
+	title: 'Локи - Marvel',
+	background: 'loki/background.jpg',
+	favicon: 'loki/favicon.png',
+	textColor: '#ffffff',
+	backgroundColor: '#000000',
+	subColor: '#014206',
+	header: {
+		logo: 'loki/logo.png',
+		menu: [
+			{
+				link: '#',
+				title: 'Описание',
+			},
+			{
+				link: '#',
+				title: 'Трейлер',
+			},
+			{
+				link: '#',
+				title: 'Отзывы',
+			},
+		],
+		social: [
+			{
+				title: 'Twitter',
+				link: 'https://twitter.com',
+				image: 'loki/social/twitter.svg'
+			},
+			{
+				title: 'Instagram',
+				link: 'https://instagram.com',
+				image: 'loki/social/instagram.svg'
+			},
+			{
+				title: 'Facebook',
+				link: 'https://facebook.com',
+				image: 'loki/social/facebook.svg'
+			}
+		]
+	},
+	main : {
+		genre: '2021, фантастика, фэнтези, боевик, приключения',
+		rating: '8',
+		description: 'Локи попадает в таинственную организацию «Управление временными изменениями» после того, как он украл Тессеракт, и путешествует во времени, меняя историю.',
+		trailer: 'https://youtu.be/YrjHcYqe31g',
+		slider: [
+			{
+				img: 'loki/series/series-1.jpg',
+				title: 'Славная миссия',
+				subtitle: 'Серия №1',
+			}, 
+			{
+				img: 'loki/series/series-2.jpg',
+				title: 'Вариант',
+				subtitle: 'Серия №2',
+			}, 
+			{
+				img: 'loki/series/series-3.jpg',
+				title: 'Ламентис',
+				subtitle: 'Серия №3',
+			}, 
+			{
+				img: 'loki/series/series-4.jpg',
+				title: 'Смежное событие',
+				subtitle: 'Серия №4',
+			},
+			{
+				img: 'loki/series/series-5.jpg',
+				title: 'Путешествие в неизвестность',
+				subtitle: 'Серия №5',
+			},
+			{
+				img: 'loki/series/series-6.jpg',
+				title: 'На все времена. Всегда',
+				subtitle: 'Серия №6',
+			}
+		]
+	},
+	footer: {
+		copyright: '© 2021 The Loki. All right reserved.',
+		footerLink: [
+			{link: 'Privacy Policy',},
+			{link: 'Terms of Service',},
+			{link: 'Legal',},
+		]
+	},
 });
