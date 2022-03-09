@@ -12,9 +12,9 @@
 ![JavaScript](https://img.shields.io/badge/-JavaScript-black?style=flat-square&logo=javascript)
 
 ### Используемые плагины/библиотеки
-![Anima-JS](https://img.shields.io/badge/-Animate-Js-black?style=flat-square&logo=animate.js&logoColor=animate.js)
+![Animate.JS](https://img.shields.io/badge/-Animate.Js-black?style=flat-square&logo=animate.js&logoColor=animate.js)
 ![YoutubeModal](https://img.shields.io/badge/-YoutubeModal-black?style=flat-square&logo=youtubemodal&logoColor=youtubemodal)
-![Swiper.js](https://img.shields.io/badge/-Swiper-Js-black?style=flat-square&logo=swiper.js&logoColor=swiper.js)
+![Swiper.js](https://img.shields.io/badge/-Swiper.Js-black?style=flat-square&logo=swiper.js&logoColor=swiper.js)
 
 
 ### Запуск проекта
