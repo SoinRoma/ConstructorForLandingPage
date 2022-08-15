@@ -77,7 +77,7 @@
 function init() {
 
 	document.head.insertAdjacentHTML('beforeend',
-		`<link type="text/css" rel="stylesheet" href="youtube-modal/index.css">`);
+		`<link type="text/css" rel="stylesheet" href="./plugins/youtube-modal/index.css">`);
 
 
 	const overlay = document.createElement('div');

@@ -16,8 +16,3 @@
 ![YoutubeModal](https://img.shields.io/badge/-YoutubeModal-black?style=flat-square&logo=youtubemodal&logoColor=youtubemodal)
 ![Swiper.js](https://img.shields.io/badge/-Swiper.Js-black?style=flat-square&logo=swiper.js&logoColor=swiper.js)
 
-
-### Запуск проекта
-```
-Разархивировать проект и запустить в IDE
-```

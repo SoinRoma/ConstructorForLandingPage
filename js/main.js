@@ -93,7 +93,7 @@ const createMain = ({title, main: {genre, rating, mainTitle, description, traile
 		for (let i = 0; i < 10; i++){
 			const star = getElement('img', ['star'], {
 				alt: i ? '' : `Рейтинг ${rating} из 10`,
-				src: i < rating ? 'img/star.svg' : 'img/star-o.svg',
+				src: i < rating ? 'images/svg/star.svg' : 'images/svg/star-o.svg',
 			});
 
 			ratingStars.append(star);
@@ -129,9 +129,9 @@ const createMain = ({title, main: {genre, rating, mainTitle, description, traile
 			href: trailer,
 		});
 
-		const icon = getElement('img', ['play-img'], {
+		const icon = getElement('img', ['play-images'], {
 			alt: 'play',
-			src: 'img/play.svg',
+			src: 'images/svg/play.svg',
 		});
 
 		mainLink.append(icon);
@@ -147,7 +147,7 @@ const createMain = ({title, main: {genre, rating, mainTitle, description, traile
 		const slides = slider.map(item => {
 			const swiperSlide = getElement('div', ['swiper-slide']);
 			const card = getElement('figure', ['card']);
-			const cardImage = getElement('img', ['card-img'], {
+			const cardImage = getElement('img', ['card-images'], {
 				src: item.img,
 				alt: item.subtitle,
 			});
@@ -281,16 +281,16 @@ const сonstructor = (selector, options) => {
 // Например для Сериала Ведьмак И Локи
 
 // Для сериала Ведьмак
-/*
+
 сonstructor('.app', {
 	title: 'Ведьмак - главная страница',
-	background: 'witcher/background.jpg',
-	favicon: 'witcher/logo.png',
+	background: 'images/witcher/background.jpg',
+	favicon: 'images/witcher/logo.png',
 	textColor: '#ffffff',
 	backgroundColor: '#141218',
 	subColor: '#9D2929',
 	header: {
-		logo: 'witcher/logo.png',
+		logo: 'images/witcher/logo.png',
 		menu: [
 			{
 				link: '#',
@@ -309,17 +309,17 @@ const сonstructor = (selector, options) => {
 			{
 				title: 'Twitter',
 				link: 'https://twitter.com',
-				image: 'witcher/social/twitter.svg'
+				image: 'images/witcher/social/twitter.svg'
 			},
 			{
 				title: 'Instagram',
 				link: 'https://instagram.com',
-				image: 'witcher/social/instagram.svg'
+				image: 'images/witcher/social/instagram.svg'
 			},
 			{
 				title: 'Facebook',
 				link: 'https://facebook.com',
-				image: 'witcher/social/facebook.svg'
+				image: 'images/witcher/social/facebook.svg'
 			}
 		]
 	},
@@ -331,25 +331,25 @@ const сonstructor = (selector, options) => {
 		trailer: 'https://www.youtube.com/watch?v=P0oJqfLzZzQ',
 		slider: [
 			{
-				img: 'witcher/series/series-1.jpg',
+				img: 'images/witcher/series/series-1.jpg',
 				title: 'Начало конца',
 				subtitle: 'Серия №1',
 
 			},
 			{
-				img: 'witcher/series/series-2.jpg',
+				img: 'images/witcher/series/series-2.jpg',
 				title: 'Четыре марки',
 				subtitle: 'Серия №2',
 
 			},
 			{
-				img: 'witcher/series/series-3.jpg',
+				img: 'images/witcher/series/series-3.jpg',
 				title: 'Предательская луна',
 				subtitle: 'Серия №3',
 
 			},
 			{
-				img: 'witcher/series/series-4.jpg',
+				img: 'images/witcher/series/series-4.jpg',
 				title: 'Банкеты, ублюдки и похороны',
 				subtitle: 'Серия №4',
 
@@ -367,94 +367,94 @@ const сonstructor = (selector, options) => {
 	},
 
 });
-*/
+
 
 // Для сериала Локи
-сonstructor('.app', {
-	title: 'Локи - Marvel',
-	background: 'loki/background.jpg',
-	favicon: 'loki/favicon.png',
-	textColor: '#ffffff',
-	backgroundColor: '#000000',
-	subColor: '#014206',
-	header: {
-		logo: 'loki/logo.png',
-		menu: [
-			{
-				link: '#',
-				title: 'Описание',
-			},
-			{
-				link: '#',
-				title: 'Трейлер',
-			},
-			{
-				link: '#',
-				title: 'Отзывы',
-			},
-		],
-		social: [
-			{
-				title: 'Twitter',
-				link: 'https://twitter.com',
-				image: 'loki/social/twitter.svg'
-			},
-			{
-				title: 'Instagram',
-				link: 'https://instagram.com',
-				image: 'loki/social/instagram.svg'
-			},
-			{
-				title: 'Facebook',
-				link: 'https://facebook.com',
-				image: 'loki/social/facebook.svg'
-			}
-		]
-	},
-	main : {
-		genre: '2021, фантастика, фэнтези, боевик, приключения',
-		rating: '8',
-		description: 'Локи попадает в таинственную организацию «Управление временными изменениями» после того, как он украл Тессеракт, и путешествует во времени, меняя историю.',
-		trailer: 'https://youtu.be/YrjHcYqe31g',
-		slider: [
-			{
-				img: 'loki/series/series-1.jpg',
-				title: 'Славная миссия',
-				subtitle: 'Серия №1',
-			}, 
-			{
-				img: 'loki/series/series-2.jpg',
-				title: 'Вариант',
-				subtitle: 'Серия №2',
-			}, 
-			{
-				img: 'loki/series/series-3.jpg',
-				title: 'Ламентис',
-				subtitle: 'Серия №3',
-			}, 
-			{
-				img: 'loki/series/series-4.jpg',
-				title: 'Смежное событие',
-				subtitle: 'Серия №4',
-			},
-			{
-				img: 'loki/series/series-5.jpg',
-				title: 'Путешествие в неизвестность',
-				subtitle: 'Серия №5',
-			},
-			{
-				img: 'loki/series/series-6.jpg',
-				title: 'На все времена. Всегда',
-				subtitle: 'Серия №6',
-			}
-		]
-	},
-	footer: {
-		copyright: '© 2021 The Loki. All right reserved.',
-		footerLink: [
-			{link: 'Privacy Policy',},
-			{link: 'Terms of Service',},
-			{link: 'Legal',},
-		]
-	},
-});
+// сonstructor('.app', {
+// 	title: 'Локи - Marvel',
+// 	background: 'images/loki/background.jpg',
+// 	favicon: 'images/loki/favicon.png',
+// 	textColor: '#ffffff',
+// 	backgroundColor: '#000000',
+// 	subColor: '#014206',
+// 	header: {
+// 		logo: 'images/loki/logo.png',
+// 		menu: [
+// 			{
+// 				link: '#',
+// 				title: 'Описание',
+// 			},
+// 			{
+// 				link: '#',
+// 				title: 'Трейлер',
+// 			},
+// 			{
+// 				link: '#',
+// 				title: 'Отзывы',
+// 			},
+// 		],
+// 		social: [
+// 			{
+// 				title: 'Twitter',
+// 				link: 'https://twitter.com',
+// 				image: 'images/loki/social/twitter.svg'
+// 			},
+// 			{
+// 				title: 'Instagram',
+// 				link: 'https://instagram.com',
+// 				image: 'images/loki/social/instagram.svg'
+// 			},
+// 			{
+// 				title: 'Facebook',
+// 				link: 'https://facebook.com',
+// 				image: 'images/loki/social/facebook.svg'
+// 			}
+// 		]
+// 	},
+// 	main : {
+// 		genre: '2021, фантастика, фэнтези, боевик, приключения',
+// 		rating: '8',
+// 		description: 'Локи попадает в таинственную организацию «Управление временными изменениями» после того, как он украл Тессеракт, и путешествует во времени, меняя историю.',
+// 		trailer: 'https://youtu.be/YrjHcYqe31g',
+// 		slider: [
+// 			{
+// 				images: 'images/loki/series/series-1.jpg',
+// 				title: 'Славная миссия',
+// 				subtitle: 'Серия №1',
+// 			},
+// 			{
+// 				images: 'images/loki/series/series-2.jpg',
+// 				title: 'Вариант',
+// 				subtitle: 'Серия №2',
+// 			},
+// 			{
+// 				images: 'images/loki/series/series-3.jpg',
+// 				title: 'Ламентис',
+// 				subtitle: 'Серия №3',
+// 			},
+// 			{
+// 				images: 'images/loki/series/series-4.jpg',
+// 				title: 'Смежное событие',
+// 				subtitle: 'Серия №4',
+// 			},
+// 			{
+// 				images: 'images/loki/series/series-5.jpg',
+// 				title: 'Путешествие в неизвестность',
+// 				subtitle: 'Серия №5',
+// 			},
+// 			{
+// 				images: 'images/loki/series/series-6.jpg',
+// 				title: 'На все времена. Всегда',
+// 				subtitle: 'Серия №6',
+// 			}
+// 		]
+// 	},
+// 	footer: {
+// 		copyright: '© 2021 The Loki. All right reserved.',
+// 		footerLink: [
+// 			{link: 'Privacy Policy',},
+// 			{link: 'Terms of Service',},
+// 			{link: 'Legal',},
+// 		]
+// 	},
+// });

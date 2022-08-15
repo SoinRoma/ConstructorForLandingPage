@@ -228,7 +228,7 @@ body{
     width: 32px;
     height: 23px;
     border: none;
-    background-image: url('../img/arrow.svg');
+    background-image: url('../images/svg/arrow.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
